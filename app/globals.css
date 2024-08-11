@@ -2,32 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.embla {
+  overflow: hidden;
+  width: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.bg-footer {
+  background-color: #0b0b0b;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.embla__container {
+  display: flex;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+}
+
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.embla__dot {
+  background-color: #d1d5db;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 0.5rem;
+  margin: 0 0.25rem;
+  outline: none;
+  padding: 0;
+  width: 0.5rem;
+}
+
+.embla__dot.is-selected {
+  background-color: #111827;
 }
