@@ -9,12 +9,15 @@ export default function Search(props) {
     }
     return (
         <>
-            <div className="fixed w-full h-screen bg-black bg-opacity-55">
-                <div className="absolute bg-blue-400 right-5 top-5">
+            <div onClick={handleClick} className="fixed w-full h-screen bg-black bg-opacity-55">
+                <div className="absolute bg-info right-5 top-5 hover:cursor-pointer">
                     <FontAwesomeIcon onClick={handleClick} className='w-5 h-5 p-4 text-white ' icon={faX} />
                 </div>
                 <div className="flex flex-col items-center justify-center w-full h-full px-10">
-                    <input type="text" placeholder="Type here" className="w-full h-10 text-center text-white bg-transparent border-b focus:outline-none placeholder-shown:placeholder:text-white" />
+                    <input type="text" placeholder="Type here" className="w-full pb-4 text-4xl text-center text-white bg-transparent border-b focus:outline-none placeholder-shown:placeholder:text-white" />
+                </div>
+                <div className="absolute flex items-center w-full px-10 mt-20 top-1/2">
+                    <button onClick={handleClick} className="mx-auto text-white border-none btn-info hover:text-white btn">Search</button>
                 </div>
             </div>
         </>
