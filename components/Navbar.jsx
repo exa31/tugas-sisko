@@ -12,7 +12,7 @@ export default function Navbar() {
     const [isOpenBrand, setIsOpenBrand] = useState(false);
     const [isOpenInformation, setIsOpenInformation] = useState(false);
     const [isOpenCart, setIsOpenCart] = useState(false)
-    const [isOpenNav, setIsOpenNav] = useState(true)
+    const [isOpenNav, setIsOpenNav] = useState(false)
 
 
     const pathname = usePathname();
