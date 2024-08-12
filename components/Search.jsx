@@ -4,7 +4,6 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Search(props) {
-    console.log(props.handleOpenSearch)
     function handleClick() {
         props.handleOpenSearch()
     }
@@ -15,7 +14,7 @@ export default function Search(props) {
                     <FontAwesomeIcon onClick={handleClick} className='w-5 h-5 p-4 text-white ' icon={faX} />
                 </div>
                 <div className="flex flex-col items-center justify-center w-full h-full px-10">
-                    <input type="text" placeholder="Type here" className="w-full h-10 text-center text-black border-b placeholder-shown:placeholder:text-white" />
+                    <input type="text" placeholder="Type here" className="w-full h-10 text-center text-white bg-transparent border-b focus:outline-none placeholder-shown:placeholder:text-white" />
                 </div>
             </div>
         </>

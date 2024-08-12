@@ -10,7 +10,7 @@ import Search from "@/components/Search";
 export default function RootLayout({ children }) {
 
   const [scroll, setScroll] = useState(false);
-  const [isOpenSearch, setIsOpenSearch] = useState(true)
+  const [isOpenSearch, setIsOpenSearch] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
   }, []);
 
   function handleOpenSearch() {
-    console.log('open search')
     setIsOpenSearch(!isOpenSearch)
   }
 
@@ -43,9 +42,7 @@ export default function RootLayout({ children }) {
               <Search handleOpenSearch={handleOpenSearch} />
             </div>
           }
-          <div className="">
-            <Navbar handleOpenSearch={handleOpenSearch} />
-          </div>
+          <Navbar handleOpenSearch={handleOpenSearch} />
           <div className={scroll ? "fixed hidden lg:block w-full top-0 h-max duration-75 z-20 bg-white" : "hidden duration-75 h-0"}>
             <NavbarScroll handleOpenSearch={handleOpenSearch} />
           </div>
