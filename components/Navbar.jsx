@@ -5,22 +5,24 @@ import { faBars, faCartShopping, faMagnifyingGlass, faX } from '@fortawesome/fre
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import SideCart from './SideCart';
 
-export default function Navbar({ handleOpenSearch }) {
+
+export default function Navbar({ handleOpenSearch, isOpenCart, setIsOpenCart }) {
 
     const [isOpenBrand, setIsOpenBrand] = useState(false);
     const [isOpenInformation, setIsOpenInformation] = useState(false);
-    const [isOpenCart, setIsOpenCart] = useState(false)
     const [isOpenNav, setIsOpenNav] = useState(false)
 
 
     const pathname = usePathname();
     return (
         <>
-            <div className="container flex-row px-4 py-0 mx-auto md:px-20 md:flex-col lg:flex-row navbar bg-base-100">
+            <div onClick={() => setIsOpenCart(false)} className="container flex-row px-4 py-0 mx-auto md:px-20 md:flex-col lg:flex-row navbar bg-base-100">
                 <div className='flex justify-start pb-2 me-4 md:hidden'>
-                    <FontAwesomeIcon onClick={() => setIsOpenNav(true)} className='text-xl hover:cursor-pointer' icon={faBars} />
+                    <FontAwesomeIcon onClick={() => {
+                        setIsOpenCart(false)
+                        setIsOpenNav(true)
+                    }} className='text-xl hover:cursor-pointer' icon={faBars} />
                 </div>
                 <div className="gap-10 md:mb-4 me-12">
                     <img src="/logo (1).jpg" className="w-32 md:px-24 lg:px-0 lg:w-72 md:w-screen" alt="logo" />
@@ -29,8 +31,14 @@ export default function Navbar({ handleOpenSearch }) {
                     <div className='flex justify-end w-full md:border-b md:justify-between text-start'>
                         <h1 className='hidden text-xl md:block text-start'>Hijja Indonesia</h1>
                         <div>
-                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl hover:cursor-pointer' />
-                            <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl hover:cursor-pointer border-s ps-6' />
+                            <FontAwesomeIcon onClick={() => {
+                                handleOpenSearch()
+                                setIsOpenCart(false)
+                            }} icon={faMagnifyingGlass} className='p-2 text-xl hover:cursor-pointer' />
+                            <FontAwesomeIcon onClick={(e) => {
+                                e.stopPropagation()
+                                setIsOpenCart(!isOpenCart)
+                            }} icon={faCartShopping} className='p-2 text-xl hover:cursor-pointer border-s ps-6' />
                         </div>
                     </div>
                     <div className={isOpenNav ? 'items-center duration-300  overflow-auto z-50 fixed md:static md:flex-row text-white md:px-0 px-4 md:text-black left-0 flex-col w-full h-full top-0 md:bg-transparent bg-black md:mt-2 text-sm md:flex pb-7' :
@@ -129,9 +137,6 @@ export default function Navbar({ handleOpenSearch }) {
                             href='/contact' >BLOG</Link>
                     </div>
                 </div>
-            </div>
-            <div className='z-50'>
-                <SideCart isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
             </div>
         </>
     )

@@ -8,17 +8,15 @@ import { useState } from 'react';
 import SideCart from './SideCart';
 
 
-export default function NavbarScroll({ handleOpenSearch }) {
+export default function NavbarScroll({ handleOpenSearch, isOpenCart, setIsOpenCart }) {
     const [isOpenBrand, setIsOpenBrand] = useState(false);
     const [isOpenInformation, setIsOpenInformation] = useState(false);
-    const [isOpenCart, setIsOpenCart] = useState(false)
-
 
     const pathname = usePathname();
     return (
         <>
 
-            <div className="z-30 flex-row mx-auto md:px-20 lg:px-48 navbar bg-base-100">
+            <div className="z-30 flex-row mx-auto lg:container md:px-20 lg:px-48 navbar bg-base-100">
                 <div className="gap-10 md:mb-4 me-12">
                     <img src="/logo (1).jpg" className="w-32 lg:px-0 " alt="logo" />
                 </div>
@@ -115,13 +113,13 @@ export default function NavbarScroll({ handleOpenSearch }) {
                         </div>
                         <div>
                             <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl hover:cursor-pointer' />
-                            <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl border-s ps-6 hover:cursor-pointer' />
+                            <FontAwesomeIcon onClick={(e) => {
+                                e.stopPropagation()
+                                setIsOpenCart(!isOpenCart)
+                            }} icon={faCartShopping} className='p-2 text-xl border-s ps-6 hover:cursor-pointer' />
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className='z-50'>
-                <SideCart isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
             </div>
         </>
     )

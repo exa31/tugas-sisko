@@ -6,11 +6,13 @@ import Navbar from "@/components/Navbar";
 import { useEffect, useState } from "react";
 import NavbarScroll from "@/components/NavbarScroll";
 import Search from "@/components/Search";
+import SideCart from "@/components/SideCart";
 
 export default function RootLayout({ children }) {
 
   const [scroll, setScroll] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false)
+  const [isOpenCart, setIsOpenCart] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,19 +38,24 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <nav className="sticky top-0 z-40 w-full md:static">
+        <nav onClick={() => setIsOpenCart(false)} className="sticky top-0 z-40 w-full md:static">
           {isOpenSearch &&
             <div className="fixed z-50">
               <Search handleOpenSearch={handleOpenSearch} />
             </div>
           }
-          <Navbar handleOpenSearch={handleOpenSearch} />
+          <Navbar isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} handleOpenSearch={handleOpenSearch} />
           <div className={scroll ? "fixed hidden lg:block w-full top-0 h-max duration-75 z-20 bg-white" : "hidden duration-75 h-0"}>
-            <NavbarScroll handleOpenSearch={handleOpenSearch} />
+            <NavbarScroll isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} handleOpenSearch={handleOpenSearch} />
           </div>
         </nav>
-        <div className="w-full">
+        <div onClick={() => {
+          setIsOpenCart(false)
+        }} className="w-full">
           {children}
+        </div>
+        <div className='z-50'>
+          <SideCart isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
         </div>
         <Footer />
 
