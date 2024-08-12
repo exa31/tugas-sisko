@@ -41,3 +41,11 @@
 .embla__dot.is-selected {
   background-color: #111827;
 }
+
+.bg-sideCart {
+  background-color: #eaeaea;
+}
+
+.shadow-cart {
+  box-shadow: -1px 0px 10px 1px #aaaaaa;
+}
