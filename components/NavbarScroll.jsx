@@ -19,9 +19,6 @@ export default function NavbarScroll({ handleOpenSearch }) {
         <>
 
             <div className="z-30 flex-row mx-auto md:px-20 lg:px-48 navbar bg-base-100">
-                <div className='flex justify-start pb-2 me-4 md:hidden'>
-                    <FontAwesomeIcon className='text-xl' icon={faBars} />
-                </div>
                 <div className="gap-10 md:mb-4 me-12">
                     <img src="/logo (1).jpg" className="w-32 lg:px-0 " alt="logo" />
                 </div>
@@ -117,8 +114,8 @@ export default function NavbarScroll({ handleOpenSearch }) {
                                 href='/contact' >BLOG</Link>
                         </div>
                         <div>
-                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl' />
-                            <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl border-s ps-6' />
+                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl hover:cursor-pointer' />
+                            <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl border-s ps-6 hover:cursor-pointer' />
                         </div>
                     </div>
                 </div>

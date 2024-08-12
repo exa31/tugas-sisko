@@ -20,7 +20,7 @@ export default function Navbar({ handleOpenSearch }) {
         <>
             <div className="container flex-row px-4 py-0 mx-auto md:px-20 md:flex-col lg:flex-row navbar bg-base-100">
                 <div className='flex justify-start pb-2 me-4 md:hidden'>
-                    <FontAwesomeIcon onClick={() => setIsOpenNav(true)} className='text-xl' icon={faBars} />
+                    <FontAwesomeIcon onClick={() => setIsOpenNav(true)} className='text-xl hover:cursor-pointer' icon={faBars} />
                 </div>
                 <div className="gap-10 md:mb-4 me-12">
                     <img src="/logo (1).jpg" className="w-32 md:px-24 lg:px-0 lg:w-72 md:w-screen" alt="logo" />
@@ -29,15 +29,15 @@ export default function Navbar({ handleOpenSearch }) {
                     <div className='flex justify-end w-full md:border-b md:justify-between text-start'>
                         <h1 className='hidden text-xl md:block text-start'>Hijja Indonesia</h1>
                         <div>
-                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl' />
-                            <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl border-s ps-6' />
+                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl hover:cursor-pointer' />
+                            <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl hover:cursor-pointer border-s ps-6' />
                         </div>
                     </div>
                     <div className={isOpenNav ? 'items-center duration-300  overflow-auto z-50 fixed md:static md:flex-row text-white md:px-0 px-4 md:text-black left-0 flex-col w-full h-full top-0 md:bg-transparent bg-black md:mt-2 text-sm md:flex pb-7' :
                         'items-center fixed md:static text-black overflow-hidden md:overflow-visible top-0 w-0 duration-300 mt-0 md:mt-2 h-full left-0 text-sm md:flex pb-7'
                     }>
                         <div className='flex justify-end p-5 md:hidden'>
-                            <FontAwesomeIcon onClick={() => setIsOpenNav(!isOpenNav)} className='p-3 text-white border border-gray-700' icon={faX} />
+                            <FontAwesomeIcon onClick={() => setIsOpenNav(!isOpenNav)} className='p-3 text-white border border-gray-700 hover:cursor-pointer' icon={faX} />
                         </div>
                         <Link
                             className={`${pathname === '/' ? 'pt-2 block pb-4 md:pb-0 border-b md:border-none border-gray-700 text-primary md:ps-0 pe-7 ' : ''}`}
