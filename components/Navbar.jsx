@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import SideCart from './SideCart';
 
-export default function Navbar() {
+export default function Navbar({ handleOpenSearch }) {
 
     const [isOpenBrand, setIsOpenBrand] = useState(false);
     const [isOpenInformation, setIsOpenInformation] = useState(false);
@@ -29,12 +29,12 @@ export default function Navbar() {
                     <div className='flex justify-end w-full md:border-b md:justify-between text-start'>
                         <h1 className='hidden text-xl md:block text-start'>Hijja Indonesia</h1>
                         <div>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className='p-2 text-xl' />
+                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl' />
                             <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl border-s ps-6' />
                         </div>
                     </div>
                     <div className={isOpenNav ? 'items-center duration-300  overflow-auto z-50 fixed md:static md:flex-row text-white md:px-0 px-4 md:text-black left-0 flex-col w-full h-full top-0 md:bg-transparent bg-black md:mt-2 text-sm md:flex pb-7' :
-                        'items-center fixed md:static text-black overflow-hidden md:overflow-visible md:mt-2 top-0 w-0 duration-700 mt-0 md:mt-2 h-full left-0 text-sm md:flex pb-7'
+                        'items-center fixed md:static text-black overflow-hidden md:overflow-visible top-0 w-0 duration-300 mt-0 md:mt-2 h-full left-0 text-sm md:flex pb-7'
                     }>
                         <div className='flex justify-end p-5 md:hidden'>
                             <FontAwesomeIcon onClick={() => setIsOpenNav(!isOpenNav)} className='p-3 text-white border border-gray-700' icon={faX} />

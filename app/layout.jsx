@@ -5,34 +5,49 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { useEffect, useState } from "react";
 import NavbarScroll from "@/components/NavbarScroll";
+import Search from "@/components/Search";
 
 export default function RootLayout({ children }) {
 
   const [scroll, setScroll] = useState(false);
+  const [isOpenSearch, setIsOpenSearch] = useState(true)
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       if (window.scrollY > 100) {
         setScroll(true);
-        console.log(window.scrollY);
       } else {
         setScroll(false);
-        console.log(window.scrollY);
       }
-    })
-  });
+    };
 
-  console.log(scroll);
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  function handleOpenSearch() {
+    console.log('open search')
+    setIsOpenSearch(!isOpenSearch)
+  }
 
   return (
     <html lang="en">
       <body>
-        <nav className="sticky top-0 z-50 w-full md:static">
+        <nav className="sticky top-0 z-40 w-full md:static">
+          {isOpenSearch &&
+            <div className="fixed z-50">
+              <Search handleOpenSearch={handleOpenSearch} />
+            </div>
+          }
           <div className="">
-            <Navbar />
+            <Navbar handleOpenSearch={handleOpenSearch} />
           </div>
-          <div className={scroll ? "fixed hidden lg:block w-full top-0 h-max duration-75 z-40 bg-white" : "hidden duration-75 h-0"}>
-            <NavbarScroll />
+          <div className={scroll ? "fixed hidden lg:block w-full top-0 h-max duration-75 z-20 bg-white" : "hidden duration-75 h-0"}>
+            <NavbarScroll handleOpenSearch={handleOpenSearch} />
           </div>
         </nav>
         <div className="w-full">

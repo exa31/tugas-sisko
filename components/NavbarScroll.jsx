@@ -7,7 +7,8 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import SideCart from './SideCart';
 
-export default function NavbarScroll() {
+
+export default function NavbarScroll({ handleOpenSearch }) {
     const [isOpenBrand, setIsOpenBrand] = useState(false);
     const [isOpenInformation, setIsOpenInformation] = useState(false);
     const [isOpenCart, setIsOpenCart] = useState(false)
@@ -16,7 +17,8 @@ export default function NavbarScroll() {
     const pathname = usePathname();
     return (
         <>
-            <div className="flex-row mx-auto md:px-20 lg:px-48 navbar bg-base-100">
+
+            <div className="z-30 flex-row mx-auto md:px-20 lg:px-48 navbar bg-base-100">
                 <div className='flex justify-start pb-2 me-4 md:hidden'>
                     <FontAwesomeIcon className='text-xl' icon={faBars} />
                 </div>
@@ -115,7 +117,7 @@ export default function NavbarScroll() {
                                 href='/contact' >BLOG</Link>
                         </div>
                         <div>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className='p-2 text-xl' />
+                            <FontAwesomeIcon onClick={() => handleOpenSearch()} icon={faMagnifyingGlass} className='p-2 text-xl' />
                             <FontAwesomeIcon onClick={() => setIsOpenCart(!isOpenCart)} icon={faCartShopping} className='p-2 text-xl border-s ps-6' />
                         </div>
                     </div>
