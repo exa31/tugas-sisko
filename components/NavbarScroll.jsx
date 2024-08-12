@@ -40,7 +40,7 @@ export default function NavbarScroll({ handleOpenSearch }) {
                                     className='duration-300 hover:text-primary'
                                 >BRAND
                                 </Link>
-                                <div onMouseEnter={() => setIsOpenBrand(true)} onMouseLeave={() => setIsOpenBrand(false)} className={isOpenBrand ? 'absolute z-10 pt-7' : "overflow-hidden hidden"}>
+                                <div onMouseEnter={() => setIsOpenBrand(true)} onMouseLeave={() => setIsOpenBrand(false)} className={isOpenBrand ? 'absolute z-10 pt-12' : "overflow-hidden hidden"}>
                                     <div className='grid grid-cols-2 gap-4 px-3 text-gray-600 -translate-x-40 bg-white w-96 top-10'>
                                         <Link className="p-4 text-sm border-b border-dashed hover:text-primary" href='/aas'>
                                             Mukena
@@ -88,7 +88,7 @@ export default function NavbarScroll({ handleOpenSearch }) {
                                     className='duration-300 hover:text-primary'
                                     href='/product' >INFORMATION
                                 </Link>
-                                <div onMouseEnter={() => setIsOpenInformation(true)} onMouseLeave={() => setIsOpenInformation(false)} className={isOpenInformation ? 'absolute z-10 pt-7' : "overflow-hidden hidden"}>
+                                <div onMouseEnter={() => setIsOpenInformation(true)} onMouseLeave={() => setIsOpenInformation(false)} className={isOpenInformation ? 'absolute z-10 pt-12' : "overflow-hidden hidden"}>
                                     <div className='flex flex-col w-56 gap-4 px-3 text-gray-600 bg-white top-10'>
                                         <Link className="px-4 py-3 text-sm duration-300 border-b border-dashed hover:text-primary " href='/aas'>
                                             CARA PEMBELIAN

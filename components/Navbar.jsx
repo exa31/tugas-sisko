@@ -44,14 +44,14 @@ export default function Navbar({ handleOpenSearch }) {
                             href="/"
                         >HOME</Link>
                         <div
-                            onMouseEnter={() => setIsOpenBrand(true)} onMouseLeave={() => setIsOpenBrand(false)}
+                            onTouchStart={() => setIsOpenBrand(!isOpenBrand)} onMouseEnter={() => setIsOpenBrand(true)} onMouseLeave={() => setIsOpenBrand(false)}
                             className='relative z-20 block pt-2 pb-4 border-b border-gray-700 md:border-none md:pb-0 ps-0 md:px-7 '>
                             <Link
                                 href={`/brand`}
-                                className='block duration-300 hover:text-primary'
+                                className='duration-300 hover:text-primary'
                             >BRAND
                             </Link>
-                            <div onMouseEnter={() => setIsOpenBrand(true)} onMouseLeave={() => setIsOpenBrand(false)} className={isOpenBrand ? ' md:absolute w-full z-50 pt-7' : "hidden"}>
+                            <div onMouseEnter={() => setIsOpenBrand(true)} onMouseLeave={() => setIsOpenBrand(false)} className={isOpenBrand ? ' md:absolute w-full z-50 pt-10' : "hidden"}>
                                 <div className='grid w-full grid-cols-1 px-3 text-gray-600 bg-white md:gap-4 md:-translate-x-40 md:grid-cols-2 md:w-96 top-10'>
                                     <Link className="p-4 text-sm border-b border-dashed hover:text-primary" href='/aas'>
                                         Mukena
@@ -92,14 +92,15 @@ export default function Navbar({ handleOpenSearch }) {
                                 </div>
                             </div>
                         </div>
-                        <div onMouseEnter={() => setIsOpenInformation(true)} onMouseLeave={() => setIsOpenInformation(false)}
+                        <div
+                            onTouchStart={() => setIsOpenInformation(!isOpenInformation)} onMouseEnter={() => setIsOpenInformation(true)} onMouseLeave={() => setIsOpenInformation(false)}
                             className='relative block pt-2 pb-4 border-b border-gray-700 md:border-none md:pb-0 ps-0 md:px-7'
                         >
                             <Link
                                 className='duration-300 hover:text-primary'
                                 href='/product' >INFORMATION
                             </Link>
-                            <div onMouseEnter={() => setIsOpenInformation(true)} onMouseLeave={() => setIsOpenInformation(false)} className={isOpenInformation ? 'md:absolute z-10 pt-7 w-full' : "overflow-hidden hidden"}>
+                            <div onMouseEnter={() => setIsOpenInformation(true)} onMouseLeave={() => setIsOpenInformation(false)} className={isOpenInformation ? 'md:absolute z-10 pt-10 w-full' : "overflow-hidden hidden"}>
                                 <div className='flex flex-col gap-4 px-3 text-gray-600 bg-white md:w-56 top-10'>
                                     <Link className="px-4 py-3 text-sm duration-300 border-b border-dashed hover:text-primary " href='/aas'>
                                         CARA PEMBELIAN
